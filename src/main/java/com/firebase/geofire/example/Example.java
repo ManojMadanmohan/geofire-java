@@ -13,7 +13,7 @@ public class Example {
     public static void main(String[] args) throws InterruptedException {
         DatabaseReference firebase = FirebaseDatabase.getInstance().getReferenceFromUrl("https://geofire-v3.firebaseio.com/geofire");
         GeoFire geoFire = new GeoFire(firebase);
-        GeoQuery query = geoFire.queryAtLocation(new GeoLocation(37.7, -122.4), 10);
+        GeoQuery query = geoFire.queryAtLocation(new GeoLocation(37.7, -122.4, null), 10);
         query.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {

@@ -28,6 +28,8 @@
 
 package com.firebase.geofire;
 
+import java.util.Map;
+
 /**
  * A wrapper class for location coordinates.
  */
@@ -39,6 +41,8 @@ public final class GeoLocation {
     /** The longitude of this location in the range of [-180, 180] */
     public final double longitude;
 
+    public final Map map;
+
     /**
      * Creates a new GeoLocation with the given latitude and longitude.
      *
@@ -46,12 +50,13 @@ public final class GeoLocation {
      * @param latitude The latitude in the range of [-90, 90]
      * @param longitude The longitude in the range of [-180, 180]
      */
-    public GeoLocation(double latitude, double longitude) {
+    public GeoLocation(double latitude, double longitude, Map<String, Object> map) {
         if (!GeoLocation.coordinatesValid(latitude, longitude)) {
             throw new IllegalArgumentException("Not a valid geo location: " + latitude + ", " + longitude);
         }
         this.latitude = latitude;
         this.longitude = longitude;
+        this.map = map;
     }
 
     /**

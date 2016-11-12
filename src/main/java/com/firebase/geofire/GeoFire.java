@@ -98,11 +98,13 @@ public class GeoFire {
             Number longitudeObj = (Number) location.get(1);
             double latitude = latitudeObj.doubleValue();
             double longitude = longitudeObj.doubleValue();
+            Map map = (Map)data.get("data");
             if (location.size() == 2 && GeoLocation.coordinatesValid(latitude, longitude)) {
-                return new GeoLocation(latitude, longitude);
+                return new GeoLocation(latitude, longitude, map);
             } else {
                 return null;
             }
+
         } catch (NullPointerException e) {
             return null;
         } catch (ClassCastException e) {
